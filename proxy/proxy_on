@@ -11,9 +11,10 @@ export HTTPS_PROXY=$http_proxy &&
 export FTP_PROXY=$http_proxy &&
 export RSYNC_PROXY=$http_proxy &&
 export NO_PROXY=$no_proxy &&
-sudo cat > /etc/apt/apt.conf.d/95proxies << EOF
+cat > /tmp/apt_proxyconf << EOF &&
 Acquire {
   HTTP::proxy "http://192.168.40.1:3128";
   HTTPS::proxy "http://192.168.40.1:3128";
 }
 EOF
+sudo cp /tmp/apt_proxyconf /etc/apt/apt.conf.d/95proxies
