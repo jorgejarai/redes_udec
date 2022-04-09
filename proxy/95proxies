@@ -1,0 +1,4 @@
+Acquire {
+  HTTP::proxy "http://192.168.40.1:3128";
+  HTTPS::proxy "http://192.168.40.1:3128";
+}

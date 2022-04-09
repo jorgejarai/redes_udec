@@ -2,4 +2,5 @@
 
 echo "Apagando proxy..." &&
 unset http_proxy https_proxy ftp_proxy rsync_proxy no_proxy \
-    HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY NO_PROXY
+    HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY NO_PROXY &&
+sudo rm -f /etc/apt/apt.conf.d/95proxies
