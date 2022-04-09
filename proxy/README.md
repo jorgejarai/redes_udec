@@ -2,7 +2,7 @@
 
 Ya que la red del DIICC necesita que usemos un _proxy_ para mantener controlado el tráfico de red, necesitamos activarlos si queremos utilizar nuestras utilidades de terminal (como `apt`, `wget` o `git`, por nombrar algunas) dentro de ella. Para esto, tenemos estos _scripts_ que creé, los que nos van a servir para hacer más fácil el proceso de activar y desactivarlos.
 
-Primero, necesitan tener una copia de este repositorio en su máquina virtual. Si están usando el nuevo OVA, la carpeta ya va a estar en su escritorio. Para asegurarse de tener la última versión, ejecuten los siguientes comandos (sin copiar el `$`, por si acaso):
+Primero, necesitan tener una copia de este repositorio en su máquina virtual. Si están usando el nuevo OVA, la carpeta ya va a estar en su escritorio. Para asegurarse de tener la última versión, ejecuten los siguientes comandos desde fuera de la red del DIICC (sin copiar el `$`, por si acaso):
 
 ```console
 $ cd ~/Desktop/redes_udec
