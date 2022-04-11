@@ -4,4 +4,4 @@ En este repositorio van a encontrar archivos que utilizaremos en las prácticas 
 
 ## Lista de carpetas
 
-- [`proxy`](proxy/): _scripts_ de configuración del proxy del DIICC
+- [`proxy`](proxy/): _scripts_ de configuración del _proxy_ del DIICC

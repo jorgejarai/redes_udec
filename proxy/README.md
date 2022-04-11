@@ -16,6 +16,8 @@ $ cd ~/Desktop
 $ git clone https://github.com/jorgejarai/redes_udec
 ```
 
+Si por alguna razón no pueden clonar el repositorio o actualizarlo ya que no pueden esquivar el _proxy_, les recomiendo que copien los archivos manualmente en la carpeta `~/Desktop/redes_udec`.
+
 Luego, abramos un editor de texto:
 
 ```console
