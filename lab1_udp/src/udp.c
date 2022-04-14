@@ -73,6 +73,17 @@ void udp_connect(struct udp_socket_t* conn, const char* host, uint16_t port) {
 }
 
 /**
+ * @brief  Cierra un socket UDP
+ *
+ * @param  conn: el socket a cerrar
+ *
+ * @retval Ninguno
+ */
+void udp_close(struct udp_socket_t* conn) {
+    close(conn->fd);
+}
+
+/**
  * @brief  Envía un mensaje UDP
  *
  * @param  fd: el descriptor del socket

@@ -37,5 +37,7 @@ int main(int argc, char* argv[]) {
     buf[read_bytes] = '\0';
     printf("Server says: %s\n", buf);
 
+    udp_close(&socket);
+
     return 0;
 }
