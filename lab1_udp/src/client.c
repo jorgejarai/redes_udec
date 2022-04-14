@@ -25,7 +25,17 @@ int main(int argc, char* argv[]) {
     }
 
     const char message[] = "Hola, mundo!";
-    udp_write(&socket, message, sizeof(message));
+    udp_write(socket.fd, &socket.addr, message, sizeof(message));
+
+    char buf[1024];
+    ssize_t read_bytes = udp_read(&socket, NULL, buf, sizeof(buf));
+    if (read_bytes < 0) {
+        fprintf(stderr, "%s: could not read from socket\n", argv[0]);
+        return 1;
+    }
+
+    buf[read_bytes] = '\0';
+    printf("Server says: %s\n", buf);
 
     return 0;
 }

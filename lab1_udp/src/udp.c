@@ -1,6 +1,7 @@
 #include "udp.h"
 
 #include <netdb.h>
+#include <netinet/in.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -54,9 +55,8 @@ void udp_connect(struct udp_socket_t* conn, const char* host, uint16_t port) {
     freeaddrinfo(res);
 }
 
-void udp_write(struct udp_socket_t* conn, const char* data, size_t len) {
-    sendto(conn->fd, data, len, 0, (struct sockaddr*)&conn->addr,
-           sizeof(conn->addr));
+void udp_write(int fd, struct sockaddr_in* addr, const char* data, size_t len) {
+    sendto(fd, data, len, 0, (struct sockaddr*)addr, sizeof(*addr));
 }
 
 size_t udp_read(struct udp_socket_t* conn, struct sockaddr_in* sender,

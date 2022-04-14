@@ -37,6 +37,9 @@ int main(int argc, char *argv[]) {
 
         buf[read_bytes] = '\0';
         printf("%s says: %s\n", inet_ntoa(client_addr.sin_addr), buf);
+
+        const char response[] = "Hola a ti también!";
+        udp_write(socket.fd, &client_addr, response, sizeof(response));
     }
 
     return 0;

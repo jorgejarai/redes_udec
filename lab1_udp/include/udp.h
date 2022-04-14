@@ -13,7 +13,7 @@ struct udp_socket_t {
 void udp_listen(struct udp_socket_t* conn, uint16_t port);
 void udp_connect(struct udp_socket_t* conn, const char* host, uint16_t port);
 
-void udp_write(struct udp_socket_t* conn, const char* data, size_t len);
+void udp_write(int fd, struct sockaddr_in* addr, const char* data, size_t len);
 size_t udp_read(struct udp_socket_t* conn, struct sockaddr_in* sender,
                 const char* buf, size_t max_len);
 
