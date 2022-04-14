@@ -3,14 +3,27 @@
 #include "udp.h"
 
 int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "usage: %s <port>\n", argv[0]);
+        return 1;
+    }
+
+    int port = atoi(argv[1]);
+    if (port <= 0) {
+        fprintf(stderr, "%s: invalid port number: %s\n", argv[0], argv[1]);
+        return 1;
+    }
+
     struct udp_socket_t socket;
 
-    udp_listen(&socket, 10000);
+    udp_listen(&socket, port);
 
     if (socket.fd < 0) {
         fprintf(stderr, "%s: could not open socket\n", argv[0]);
         return 1;
     }
+
+    printf("Listening on port %d...\n", port);
 
     while (1) {
         struct sockaddr_in client_addr;
