@@ -27,8 +27,8 @@ $ nano ~/.bashrc
 Vamos a modificar la configuración de su _shell_ para incorporar los _scripts_ que necesitamos. Para esto, agreguen al final del archivo lo siguiente:
 
 ```bash
-alias proxy_on="source ~/Desktop/redes_udec/proxy_on"
-alias proxy_off="source ~/Desktop/redes_udec/proxy_off"
+alias proxy_on="source ~/Desktop/redes_udec/proxy/proxy_on"
+alias proxy_off="source ~/Desktop/redes_udec/proxy/proxy_off"
 ```
 
 Para salir del editor, presionen Ctrl+O, seguido de Enter y Ctrl+X.
