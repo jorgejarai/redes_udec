@@ -5,6 +5,14 @@
 #include <string.h>
 #include <unistd.h>
 
+/**
+ * @brief	Inicializa un servidor UDP
+ *
+ * @param[out]  conn: un puntero para guardar la información del nuevo socket
+ * @param	port: el puerto a escuchar
+ *
+ * @retval	Ninguno
+ */
 void udp_listen(struct udp_socket_t* conn, uint16_t port) {
     conn->fd = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -24,6 +32,15 @@ void udp_listen(struct udp_socket_t* conn, uint16_t port) {
     }
 }
 
+/**
+ * @brief	Conecta a un servidor UDP
+ *
+ * @param[out]  conn: un puntero para guardar la información del nuevo socket
+ * @param       host: el nombre o dirección IP del servidor
+ * @param	port: el puerto del servidor
+ *
+ * @retval	Ninguno
+ */
 void udp_connect(struct udp_socket_t* conn, const char* host, uint16_t port) {
     conn->fd = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -55,10 +72,31 @@ void udp_connect(struct udp_socket_t* conn, const char* host, uint16_t port) {
     freeaddrinfo(res);
 }
 
+/**
+ * @brief  Envía un mensaje UDP
+ *
+ * @param  fd: el descriptor del socket
+ * @param  addr: la dirección del destinatario
+ * @param  data: el mensaje a enviar
+ * @param  len: la longitud del mensaje
+ *
+ * @retval Ninguno
+ */
 void udp_write(int fd, struct sockaddr_in* addr, const char* data, size_t len) {
     sendto(fd, data, len, 0, (struct sockaddr*)addr, sizeof(*addr));
 }
 
+/**
+ * @brief	Recibe un mensaje UDP
+ *
+ * @param       conn: un puntero almacenando la información del socket
+ * @param[out]  sender: un puntero para guardar la información de la dirección
+ *		del remitente (opcional)
+ * @param	buf: un puntero para guardar el mensaje recibido
+ * @param	max_len: la longitud máxima del mensaje
+ *
+ * @retval	La longitud del mensaje recibido
+ */
 size_t udp_read(struct udp_socket_t* conn, struct sockaddr_in* sender,
                 const char* buf, size_t max_len) {
     unsigned int addr_len = sizeof(*sender);
