@@ -3,6 +3,8 @@
 
 #include <netinet/in.h>
 
+// https://cl1lib.org/book/829755/45845b
+
 // Servidor
 struct tcp_server_t {
     struct sockaddr_in server_addr;
