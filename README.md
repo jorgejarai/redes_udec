@@ -6,3 +6,4 @@ En este repositorio van a encontrar archivos que utilizaremos en las prácticas 
 
 - [`proxy`](proxy/): _scripts_ de configuración del _proxy_ del DIICC
 - [`lab1_udp`](lab1_udp/): implementación de _sockets_ UDP para preparar el laboratorio 1
+- [`lab1_skel`](lab1_skel/): código de referencia para el laboratorio 1
