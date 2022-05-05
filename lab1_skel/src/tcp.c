@@ -14,7 +14,8 @@ void tcp_server_create(struct tcp_server_t *server, int port) {
 }
 
 int tcp_server_accept(struct tcp_server_t *server,
-                      struct sockaddr_in *client_addr) {
+                      struct sockaddr_in *client_addr,
+                      socklen_t *client_addr_len) {
     // Aceptar primera conexion entrante (guardar dirección del cliente en
     // client_addr)
 
