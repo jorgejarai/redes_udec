@@ -16,4 +16,7 @@ El proyecto se compila de la forma usual con CMake, con la terminal dentro de es
 $ mkdir build
 $ cd build
 $ cmake ..
-$ make```
+$ make
+```
+
+Esto generará dos ejecutables, `client` y `server`, los cuales demuestran la API de `rudp.h`.
