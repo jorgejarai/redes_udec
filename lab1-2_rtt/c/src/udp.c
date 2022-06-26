@@ -32,9 +32,10 @@ void udp_server_init(struct udp_socket_t* server, int port) {
     server->address.address.sin_family = AF_INET;
     server->address.address.sin_port = htons(port);
     server->address.address.sin_addr.s_addr = INADDR_ANY;
+    server->address.size = sizeof(server->address.address);
 
     if (bind(server->sock, (struct sockaddr*)&server->address,
-             sizeof(server->address)) < 0) {
+             server->address.size) < 0) {
         fprintf(stderr, "could not bind socket: %s\n", strerror(errno));
         exit(1);
     }
