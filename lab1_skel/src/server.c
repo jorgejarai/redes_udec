@@ -9,7 +9,7 @@ int main(void) {
 
     while (1) {
         struct sockaddr_in client_addr;
-        socklen_t client_addr_len;
+        socklen_t client_addr_len = sizeof(client_addr);
         int sock = tcp_server_accept(&server, &client_addr, &client_addr_len);
 
         printf("Connected\n");
