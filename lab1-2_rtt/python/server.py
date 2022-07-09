@@ -9,7 +9,7 @@ def main():
     while True:
         message, address = server.receive()
 
-        print(message)
+        print(f"{address}: {message}")
 
         server.reply(address, b"chao")
 

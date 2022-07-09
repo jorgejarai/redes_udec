@@ -20,29 +20,31 @@ class RUDPDatagram:
 
 
 class RUDPServer:
-    def __init__(self, port: int):
+    def __init__(self, port: int, debug: bool = False):
+        self.__debug = debug
+
         try:
-            self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            self.socket.bind(("0.0.0.0", port))
+            self.__socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.__socket.bind(("0.0.0.0", port))
         except:
             print("Couldn't initialise server", file=sys.stderr)
             sys.exit(1)
 
     def receive(self):
-        message, address = self.socket.recvfrom(1024)
+        message, address = self.__socket.recvfrom(1024)
         datagram = pickle.loads(message)
 
-        self.last_seqno = datagram.sequence_no
-        self.last_ts = datagram.timestamp
+        self.__last_seqno = datagram.sequence_no
+        self.__last_ts = datagram.timestamp
 
         return (datagram.payload, address)
 
     def reply(self, address, payload: bytes):
         datagram = RUDPDatagram(payload=payload, address=address,
-                                sequence_no=self.last_seqno, timestamp=self.last_ts)
+                                sequence_no=self.__last_seqno, timestamp=self.__last_ts)
         serialised_datagram = pickle.dumps(datagram)
 
-        self.socket.sendto(serialised_datagram, address)
+        self.__socket.sendto(serialised_datagram, address)
 
 
 class RUDPClient:
